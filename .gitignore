@@ -16,3 +16,9 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Mac-specific
+.DS_Store
+
+# Project-specific
+*.yaml
