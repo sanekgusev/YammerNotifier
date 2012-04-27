@@ -17,12 +17,12 @@ class YammerGroupPoller
 		loop do
 			begin
 				if (message_response_hash = get_most_recent_message_response)
-					yield message_response_hash
-						if Time.parse(message_response_hash['messages'].first['created_at']) >= poll_period.seconds.ago
+					yield message_response_hash if Time.parse(message_response_hash['messages'].first['created_at']) >= poll_period.seconds.ago
 				end
 				sleep(poll_period)
 			rescue => e
 				puts e.message
+				puts e.backtrace
 			end
 		end
 	end
