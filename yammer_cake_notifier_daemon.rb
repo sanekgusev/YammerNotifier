@@ -1,5 +1,10 @@
-!#/usr/bin/ruby
+#!/usr/bin/ruby
 
 require 'daemons'
 
-Daemons.run('yammer_cake_notifier.rb')
+working_directory = Dir.pwd
+
+Daemons.run_proc('yammer_cake_notifier.rb') do
+	Dir.chdir(working_directory)
+	exec 'ruby yammer_cake_notifier.rb'
+end
